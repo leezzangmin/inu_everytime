@@ -8,7 +8,7 @@ const Post = models.post;
 var router = express.Router();
 
 router.get('/', (req, res) => {
-    board_number = req.query['board_number1'];
+    board_number = req.query['board_number'];
     Post.findAll({
         where: {
             board_number: board_number,

@@ -7,6 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 const boardRouter = require('./routes/board');
 const postRouter = require('./routes/post');
+const commentRouter = require('./routes/comment');
+
 
 const {Sequelize, sequelize} = require('./models');
 sequelize.sync({force: false}).catch((err) => {
@@ -27,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/board', boardRouter);
 app.use('/post', postRouter);
+app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
