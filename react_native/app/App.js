@@ -25,7 +25,7 @@ import {
 
 import MainPage from './MainPage.js';
 
-import boardPage from './boardPage';
+import BoardPage from './BoardPage';
 
 import {
   Colors,

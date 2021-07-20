@@ -56,7 +56,7 @@ use inuapp3;
 -- );
 
 -- insert into post
--- values(1,1,'titletitle','contentcontent',4,'2021-07-07 15:00:00');
+-- values(2,1,'제목2','내용2',4,'2021-07-07 15:00:00');
 
 -- select * from post;
 

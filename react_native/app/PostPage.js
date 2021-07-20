@@ -9,16 +9,10 @@
 // 변수 snake   asdf_asdf
 // 함수 camelCase()  
 import 'react-native-gesture-handler';
-
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-
-
-
 import axios from 'axios';
-
-
 import {
     Colors,
     DebugInstructions,
@@ -37,31 +31,26 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import BoardPage from './BoardPage';
 
 
 
 
 const Stack = createStackNavigator();
 
+const PostPage = () => {
 
-
-const MainPage = () => {
-
-    // axios.get('http://3.36.112.194:5000/board?board_number=1')
-    // .then(function (response) {
-    //   console.log('success');
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    //   Alert.alert('fail');    
-    // });
+    axios.get('http://3.36.112.194:5000/board?board_number=1')
+    .then(function (response) {
+      console.log('success');
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+      Alert.alert('fail');    
+    });
 
   return (    
-      <BoardPage>
-
-      </BoardPage>
+      <View></View>
   );
 };
 
@@ -69,4 +58,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default MainPage;
+export default PostPage;

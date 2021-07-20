@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev":"nodemon index.js",
+    "dev": "nodemon index.js",
     "start": "gulp && nodemon ./bin/www",
     "lint": "eslint ."
   },

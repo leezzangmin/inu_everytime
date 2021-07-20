@@ -3,21 +3,30 @@ const {Sequelize, sequelize} = require('../models');
 const {initModels} = require('../models/init-models');
 const models = initModels(sequelize);
 
-const Post = models.post;
-
 var router = express.Router();
 
+const Post = models.post;
+const Comment = models.comment;
+
 router.get('/', (req, res) => {
-    board_number = req.query['board_number1'];
-    Post.findAll({
+    post_number = req.query['comment'];
+    Post.findOne({
+        include: [
+            {
+                model: Comment,
+                as: 'comments',
+            },
+        ],
         where: {
-            board_number: board_number,
+            post_number_ref: post_number,
         },
         order: [['last_modified_date', 'DESC']],
     })
         .then((data) => {
             res.json(data);
-            console.log(`all posts from ${board_number} ---------->`);
+            console.log(
+                `specific post from post number ${post_number} ---------->`,
+            );
             console.log(data);
         })
         .catch((err) => {
