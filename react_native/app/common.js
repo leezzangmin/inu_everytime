@@ -34,8 +34,8 @@ export function getPost(saveData, setLoading, postNumber) {
 }
 
 export function getComment(postNumber, setLoading, setComment) {
-  const url = 'http://3.36.112.194:5000/comment?post_number=' + postNumber.toString();
-
+  const url = 'http://3.36.112.194:5000/comment?comment_number=' + postNumber.toString();
+  console.log(url);
   useEffect(() => {
     setLoading(true);
     axios.get(url)

@@ -11,6 +11,7 @@ const Comment = models.comment;
 
 router.get('/', (req, res) => {
     comment_number = req.query['comment_number'];
+    console.log(comment_number);
     Comment.findAll({
         where: {
             post_number_ref: comment_number,

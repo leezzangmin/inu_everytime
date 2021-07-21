@@ -231,7 +231,7 @@ function PostScreen({ route }) {
     )
   }
 
-  console.log(data);
+  console.log(comment);
 
   return (
     <View style={styles.container}>
