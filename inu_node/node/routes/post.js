@@ -47,12 +47,11 @@ router.post('/write', function(req, res){
         last_modified_date:data.last_modified_date,
     })
         .then( result => {
-            console.log("데이터 추가 완료");
-            res.redirect("/");
+            res.json('success');
         })
         .catch( err => {
-            
-            console.log("데이터 추가 실패");
+            console.log(err);
+            res.json('fail');
         })
 });
 
