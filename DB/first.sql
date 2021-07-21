@@ -38,8 +38,18 @@ use inuapp3;
 --     board_name varchar(20) NOT NULL
 -- );
 
--- insert into 
--- board values(1,'자유');
+
+-- insert into board values(1,'HOT 게시판');
+-- insert into board values(2,'BEST 게시판');
+-- insert into board values(3,'자유게시판');
+-- insert into board values(4,'Q&A');
+-- insert into board values(5,'동아리게시판');
+-- insert into board values(6,'전시게시판');
+-- insert into board values(7,'총학게시판');
+-- insert into board values(8,'홍보게시판');
+-- insert into board values(9,'정보게시판');
+-- insert into board values(10,'기숙사게시판');
+
 
 -- select * from board;
 
@@ -48,15 +58,42 @@ use inuapp3;
 --     board_number varchar(3) NOT NULL,
 --     post_title varchar(100) NOT NULL,
 --     post_content varchar(1000) DEFAULT 'insert contents',
--- 	user_number mediumint unsigned NOT NULL,
+-- 	   user_number mediumint unsigned NOT NULL,
 --     last_modified_date datetime NOT NULL,        
 --     
 --     FOREIGN KEY (board_number) REFERENCES board(board_number),
 --     FOREIGN KEY (user_number) REFERENCES user(user_number)
 -- );
 
--- insert into post
--- values(2,1,'제목2','내용2',4,'2021-07-07 15:00:00');
+
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(3,'제목1','내용1',4,'2021-07-07 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(3,'제목2','내용2',4,'2021-07-08 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(4,'제목1','내용1',4,'2021-07-07 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(4,'제목2','내용2',4,'2021-07-08 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(5,'제목1','내용1',4,'2021-07-07 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(5,'제목2','내용2',4,'2021-07-08 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(6,'제목1','내용1',4,'2021-07-07 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(7,'제목2','내용2',4,'2021-07-08 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(8,'제목1','내용1',4,'2021-07-07 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(8,'제목2','내용2',4,'2021-07-08 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(9,'제목1','내용1',4,'2021-07-07 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(9,'제목2','내용2',4,'2021-07-08 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(10,'제목1','내용1',4,'2021-07-07 15:00:00');
+-- insert into post(board_number, post_title, post_content, user_number, last_modified_date)
+-- values(10,'제목2','내용2',4,'2021-07-08 15:00:00');
 
 -- select * from post;
 
@@ -90,7 +127,7 @@ use inuapp3;
 -- );
 
 -- insert into comment
--- values(1,1,"댓글1",1,null,'2021-01-01 15:00:00','1');
+-- values(1,1,"댓글1",0,null,'2021-01-01 15:00:00','1');
 -- insert into comment
 -- values(2,1,"대댓글1",1,1,'2021-01-01 15:00:00','1');
 

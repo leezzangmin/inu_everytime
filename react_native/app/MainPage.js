@@ -48,19 +48,8 @@ const Stack = createStackNavigator();
 
 const MainPage = () => {
 
-    // axios.get('http://3.36.112.194:5000/board?board_number=1')
-    // .then(function (response) {
-    //   console.log('success');
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    //   Alert.alert('fail');    
-    // });
-
   return (    
       <BoardPage>
-
       </BoardPage>
   );
 };
