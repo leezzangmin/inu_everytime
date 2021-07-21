@@ -8,7 +8,6 @@ var router = express.Router();
 const Post = models.post;
 const Comment = models.comment;
 
-
 // select post
 router.get('/', (req, res) => {
     post_number = req.query['post_number'];
@@ -35,27 +34,6 @@ router.get('/', (req, res) => {
             console.error(err);
         });
 });
-
-//insert post
-router.post('/writePost', function(req, res){
-    console.log('호출됨');
-    var book = new Book();
-    book.title = req.body.name;
-    book.author = req.body.author;
-    book.published_date = new Date(req.body.published_date);
-
-    book.save(function(err){
-        if(err){
-            console.error(err);
-            res.json({result: 0});
-            return;
-        }
-
-        res.json({result: 1});
-
-    });
-});
-
 
 
 module.exports = router;
