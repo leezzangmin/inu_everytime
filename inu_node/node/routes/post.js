@@ -35,5 +35,27 @@ router.get('/', (req, res) => {
         });
 });
 
+router.post('/write', function(req, res){
+    let data = req.body;
+    console.log('123',data);
+
+    models.post.create({
+        board_number:data.board_number,
+        post_title:data.title,
+        post_content:data.content,
+        user_number:data.user_number,
+        last_modified_date:data.last_modified_date,
+    })
+        .then( result => {
+            console.log("데이터 추가 완료");
+            res.redirect("/");
+        })
+        .catch( err => {
+            
+            console.log("데이터 추가 실패");
+        })
+});
+
+
 
 module.exports = router;

@@ -14,8 +14,8 @@ router.post('/', function(req, res){
 
     models.post.create({
         board_number:data.board_number,
-        title:data.title,
-        content:data.content,
+        post_title:data.title,
+        post_content:data.content,
         user_number:data.user_number,
         last_modified_date:data.last_modified_date,
     })
@@ -24,6 +24,7 @@ router.post('/', function(req, res){
             res.redirect("/");
         })
         .catch( err => {
+            
             console.log("데이터 추가 실패");
         })
 });

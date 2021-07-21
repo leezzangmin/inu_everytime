@@ -66,7 +66,7 @@ export function getPostList(saveData, setLoading, BoardNumber) {
 
 export function writePost(postData) {
   const user_number = 1;
-  const url = 'http://3.36.112.194:5000/writePost';
+  const url = 'http://3.36.112.194:5000/post/write';
   const last_modified_date = '2021-01-01 15:00:00';
 
   const post=  {
