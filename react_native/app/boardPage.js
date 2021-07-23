@@ -141,9 +141,33 @@ function PostListScreen({ navigation, route }) {
         }}>
         <Text>글쓰기</Text>
       </TouchableOpacity>
+      
     </SafeAreaView>
   );
 }
+
+function commentWrite() {
+
+  const [commentText, setComment] = useState();
+
+  return (
+      <TextInput
+        placeholder={'댓글입력'}
+        onChangeText={
+          (commentText) => setComment(commentText)
+        }
+        autoCapitalize="none"
+        returnKeyType="next"
+        onSubmitEditing={() =>{
+          console.log('작성완료', title);
+        }}
+        underlineColorAndroid="#f000"
+        blurOnSubmit={false}
+      />
+  )
+
+}
+
 
 function WriteScreen({ route }) {
   const boardNumber = route.params.param.toString();
@@ -151,11 +175,11 @@ function WriteScreen({ route }) {
   const [titleText, setTitle] = useState();
   const [contentText, setContent] = useState();
   var postData = {
-    board_number:undefined,
-    title:undefined,
-    content:undefined,
-    user_number:undefined,
-    last_modified_date:undefined,
+    board_number: undefined,
+    title: undefined,
+    content: undefined,
+    user_number: undefined,
+    last_modified_date: undefined,
   };
 
   return (
@@ -178,22 +202,22 @@ function WriteScreen({ route }) {
         autoCapitalize="none"
         returnKeyType="next"
         onSubmitEditing={() =>
-          console.log('내용작성끝',contentText)
+          console.log('내용작성끝', contentText)
         }
         underlineColorAndroid="#f000"
         blurOnSubmit={false}
       />
 
       <Button title="글쓰기 완료" onPress={() => {
-        postData={
-          board_number:boardNumber,
-          title:titleText,
-          content:contentText,
-          user_number:undefined,
-          last_modified_date:undefined,
+        postData = {
+          board_number: boardNumber,
+          title: titleText,
+          content: contentText,
+          user_number: undefined,
+          last_modified_date: undefined,
         };
         common.writePost(postData);
-        }}></Button>
+      }}></Button>
     </View>
   )
 }
@@ -203,24 +227,18 @@ function PostScreen({ route }) {
 
   const postNumber = route.params.param.toString();
   const [loading, setLoading] = useState(true);
-  const [data, setData] = useState({
-    // board_number: undefined,
-    // last_modified_date: undefined,
-    // post_content: undefined,
-    // post_number: undefined,
-    // post_title: undefined,
-    // user_number: undefined,
-  });
+  const [data, setData] = useState({  });
+  const [writeComment,setWriteComment] = useState();
+  const [comment, setComment] = useState([{  }]);
+  var commentData = {
+    comment_user_number : undefined,
+    comment_content : undefined,
+    comment_depth : undefined,
+    comment_ref : undefined,
+    last_modified_date : undefined,
+    post_number_ref : undefined,
+  };
 
-  const [comment, setComment] = useState([{
-    // comment_content: undefined,
-    // comment_depth: undefined,
-    // comment_number: undefined,
-    // comment_ref: undefined,
-    // comment_user_number: undefined,d
-    // last_modified_date: undefined,
-    // post_number_ref: undefined,
-  }]);
 
   common.getComment(postNumber, setLoading, setComment);
   common.getPost(setData, setLoading, postNumber);
@@ -231,8 +249,6 @@ function PostScreen({ route }) {
     )
   }
 
-  console.log(comment);
-
   return (
     <View style={styles.container}>
       <Text>{data.post_title}</Text>
@@ -242,6 +258,30 @@ function PostScreen({ route }) {
           <Text>{data.comment_content}</Text>
         ))
       }
+      <TextInput
+        placeholder={'댓글작성'}
+        onChangeText={
+          (writeComment) => setWriteComment(writeComment)}
+        autoCapitalize="none"
+        returnKeyType="next"
+        onSubmitEditing={() =>
+          console.log('댓글작성끝', writeComment)
+        }
+        underlineColorAndroid="#f000"
+        blurOnSubmit={false}
+      />
+      <Button title="댓글쓰기 완료" onPress={() => {
+        commentData = {
+          comment_user_number : 1,
+          comment_content : writeComment,
+          comment_depth : 0,
+          comment_ref : null, 
+          last_modified_date : '2021-01-01 15:00:00',
+          post_number_ref : null
+        };
+        common.makeComment(commentData);
+      }}></Button>
+
     </View>
   );
 }
