@@ -1,34 +1,23 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-// 변수 snake   asdf_asdf
-// 함수 camelCase()  
 import 'react-native-gesture-handler';
-
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-
-
-
+import { useState, useEffect } from "react";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import RNRestart from 'react-native-restart';
 import axios from 'axios';
-
-
+import * as common from './common.js';
 import {
-    Colors,
-    DebugInstructions,
-    Header,
-    LearnMoreLinks,
-    ReloadInstructions,
-  } from 'react-native/Libraries/NewAppScreen';
+  Colors,
+  DebugInstructions,
+  Header,
+  LearnMoreLinks,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
 import {
-    Alert,
-    Button,
+  RefreshControl,
+  FlatList,
+  Alert,
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -36,21 +25,45 @@ import {
   Text,
   useColorScheme,
   View,
+  Touchable,
+  TouchableOpacity,
+  TextInput,
 } from 'react-native';
-import BoardPage from './BoardPage';
+import { date } from 'joi';
+import { json } from 'body-parser';
+import _ from 'denodeify';
 
-
-
+import BoardListScreen from './screen/BoardList';
+import PostListScreen from './screen/PostList';
+import PostScreen from './screen/Post';
+import WriteScreen from './screen/Write';
 
 const Stack = createStackNavigator();
 
-
+function HomeScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>react natvie 메인페이지</Text>
+      <Button
+        title="게시판목록"
+        onPress={() => navigation.navigate('BoardList')}
+      />
+    </View>
+  );
+}
 
 const MainPage = () => {
 
-  return (    
-      <BoardPage>
-      </BoardPage>
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="BoardList" component={BoardListScreen} />
+        <Stack.Screen name="PostList" component={PostListScreen} />
+        <Stack.Screen name="Post" component={PostScreen} />
+        <Stack.Screen name="Write" component={WriteScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 

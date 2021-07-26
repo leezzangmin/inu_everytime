@@ -52,7 +52,7 @@ use inuapp3;
 
 
 -- select * from board;
-
+select * from post;
 -- create table post(
 -- 	post_number mediumint unsigned PRIMARY KEY auto_increment,
 --     board_number varchar(3) NOT NULL,
@@ -113,7 +113,7 @@ use inuapp3;
 
 
 -- create table comment(
--- 	comment_number mediumint unsigned PRIMARY KEY,
+-- 	comment_number mediumint unsigned PRIMARY KEY AUTO_INCREMENT,
 --     comment_user_number mediumint unsigned NOT NULL,
 --     comment_content varchar(1000) NOT NULL,
 --     comment_depth tinyint unsigned NOT NULL,
