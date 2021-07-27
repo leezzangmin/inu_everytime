@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('comment', {
     comment_number: {
+      autoIncrement: true,
       type: DataTypes.MEDIUMINT.UNSIGNED,
       allowNull: false,
       primaryKey: true

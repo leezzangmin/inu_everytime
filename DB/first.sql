@@ -16,7 +16,7 @@ use inuapp3;
 -- create table user(
 --     user_number mediumint unsigned PRIMARY KEY auto_increment, 
 --     user_id varchar(20) NOT NULL,
---     user_pw varchar(20) NOT NULL,
+--     user_pw varchar(1000) NOT NULL,
 --     user_nickname varchar(10) NOT NULL,
 --     created_date datetime NOT NULL,
 --     user_name varchar(10) NOT NULL,
@@ -24,6 +24,9 @@ use inuapp3;
 --     user_student_id varchar(9) NOT NULL,
 --     FOREIGN KEY (user_department_number) REFERENCES department(department_number)
 --     );
+-- alter table user modify column user_pw varchar(1000) not null;
+ select * from user;
+-- SELECT `user_number`, `user_id`, `user_pw`, `user_nickname`, `created_date`, `user_name`, `user_department_number`, `user_student_id` FROM `user` AS `user` WHERE `user`.`user_id` = 'testing3';
 
 -- insert into 
 -- user values(1,'dlckdals','1234','이닉넴','2021-01-01 16:00:01','이창민','1','201601620');
@@ -52,7 +55,7 @@ use inuapp3;
 
 
 -- select * from board;
-select * from post;
+-- select * from post;
 -- create table post(
 -- 	post_number mediumint unsigned PRIMARY KEY auto_increment,
 --     board_number varchar(3) NOT NULL,

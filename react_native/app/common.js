@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import axios from 'axios';
+import RegisterScreen from './screen/Register';
 
 export function getPost(saveData, setLoading, postNumber) {
   const url = 'http://3.36.112.194:5000/post?post_number=' + postNumber.toString();
@@ -139,4 +140,36 @@ export function makeComment(commentData) {
   .catch(function(error){
     console.log(error)
   })
+}
+
+export function register(userData){
+  const url = 'http://3.36.112.194:5000/user/register';
+
+  axios.post(url,userData)
+  .then(function (res){
+    console.log('response=',res)
+  })
+  .catch(function(error){
+    console.log(error)
+  })
+
+}
+
+
+
+
+export function getDate(){
+  var today = new Date();
+
+  var year = today.getFullYear();
+  var month = ('0' + (today.getMonth() + 1)).slice(-2);
+  var day = ('0' + today.getDate()).slice(-2);
+  var hours = ('0' + today.getHours()).slice(-2); 
+  var minutes = ('0' + today.getMinutes()).slice(-2);
+  var seconds = ('0' + today.getSeconds()).slice(-2); 
+
+
+  var dateString = year + '-' + month  + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+  
+  return dateString;
 }

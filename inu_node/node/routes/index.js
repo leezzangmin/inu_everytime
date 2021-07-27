@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
     Board.findAll()
         .then((data) => {
             res.json(data);
-            console.log('all boards ---------->');
-            console.log(data);
+            //console.log('all boards ---------->');
+            //console.log(data);
         })
         .catch((err) => {
             console.error(err);

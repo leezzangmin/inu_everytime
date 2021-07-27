@@ -37,6 +37,10 @@ import BoardListScreen from './screen/BoardList';
 import PostListScreen from './screen/PostList';
 import PostScreen from './screen/Post';
 import WriteScreen from './screen/Write';
+import RegisterScreen from './screen/Register';
+
+
+
 
 const Stack = createStackNavigator();
 
@@ -48,6 +52,14 @@ function HomeScreen({ navigation }) {
         title="게시판목록"
         onPress={() => navigation.navigate('BoardList')}
       />
+      <Button
+        title="회원가입"
+        onPress={() => navigation.navigate('Register')}
+      />
+      <Button
+        title="로그인"
+        onPress={() => navigation.navigate('BoardList')}
+      />
     </View>
   );
 }
@@ -57,11 +69,13 @@ const MainPage = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="BoardList" component={BoardListScreen} />
         <Stack.Screen name="PostList" component={PostListScreen} />
         <Stack.Screen name="Post" component={PostScreen} />
         <Stack.Screen name="Write" component={WriteScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

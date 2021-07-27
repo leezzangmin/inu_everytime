@@ -1,15 +1,18 @@
 var createError = require('http-errors');
-var express = require('express');
+const express = require('express');
+const jwt = require('jsonwebtoken');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
+
+
+const userRouter = require('./user/user_control');
+
 const boardRouter = require('./routes/board');
 const postRouter = require('./routes/post');
 const commentRouter = require('./routes/comment');
 const writeRouter = require('./routes/writePost');
-
 
 const {Sequelize, sequelize} = require('./models');
 sequelize.sync({force: false}).catch((err) => {
@@ -26,6 +29,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+app.use('/user',userRouter);
+
 
 app.use('/', indexRouter);
 app.use('/board', boardRouter);
