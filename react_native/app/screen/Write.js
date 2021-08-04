@@ -6,6 +6,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import RNRestart from 'react-native-restart';
 import axios from 'axios';
 import * as common from '../common.js';
+import {CommonActions} from '@react-navigation/native';
+
 import {
   Colors,
   DebugInstructions,
@@ -34,9 +36,10 @@ import { json } from 'body-parser';
 import _ from 'denodeify';
 
 
-function WriteScreen({ route }) {
+function WriteScreen({ navigation,route }) {
+
     const boardNumber = route.params.param.toString();
-  
+
     const [titleText, setTitle] = useState();
     const [contentText, setContent] = useState();
     var postData = {
@@ -46,7 +49,6 @@ function WriteScreen({ route }) {
       user_number: undefined,
       last_modified_date: undefined,
     };
-  
     return (
       <View><Text>글쓰는페이지 : {boardNumber}번게시판</Text>
         <TextInput
@@ -82,9 +84,14 @@ function WriteScreen({ route }) {
             last_modified_date: undefined,
           };
           common.writePost(postData);
+          alert('완료');
+
+
+          navigation.navigate('PostList', { param: boardNumber });
         }}></Button>
       </View>
     )
+            // do something
   }
   
   

@@ -21,7 +21,6 @@ import * as common from '../common.js';
 
 function RegisterScreen(){
 
-
     const [user_id,setUser_id] = React.useState(null);
     const [user_pw,setUser_pw] = React.useState(null);
     const [user_nickname,setUser_nickname] = React.useState(null);

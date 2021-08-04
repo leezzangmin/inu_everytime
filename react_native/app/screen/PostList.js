@@ -33,7 +33,7 @@ import { date } from 'joi';
 import { json } from 'body-parser';
 import _ from 'denodeify';
 
-function PostListScreen({ navigation, route }) {
+function PostListScreen({ navigation, route}) {
 
     const BoardNumber = route.params.param.toString();
     const [data, setData] = useState([{
@@ -46,13 +46,14 @@ function PostListScreen({ navigation, route }) {
     }]);
     const [loading, setLoading] = useState(true);
     common.getPostList(setData, setLoading, BoardNumber);
-  
+
     if (loading) {
       return (
         <View><Text>loading...</Text></View>
       )
     }
     console.log(data);
+    console.log(data.post_number);
   
     return (
       <SafeAreaView style={styles.container}>
